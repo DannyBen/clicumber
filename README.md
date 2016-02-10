@@ -1,5 +1,7 @@
 # clicumber
 
+[![Build Status](https://travis-ci.org/DannyBen/clicumber.svg?branch=master)](https://travis-ci.org/DannyBen/clicumber)
+
 Cucumber step definitions for testing command line applications.
 
 
