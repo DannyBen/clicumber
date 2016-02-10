@@ -3,7 +3,7 @@ language: ruby
 rvm:
   - 2.2.1
 
-script: cucumber
+script: bundle exec cucumber
 
 notifications:
   email: false
