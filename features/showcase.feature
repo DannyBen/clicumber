@@ -18,5 +18,5 @@ Scenario: Execute in a given folder
 Scenario: Command that generates a file
   Given I am in the "sandbox" folder
    When I run: echo "Y U NO RUN?" > meme.txt
-   Then I should have a file "meme.txt"
+   Then the file "meme.txt" should exist
     And the file "meme.txt" should contain "Y U NO"

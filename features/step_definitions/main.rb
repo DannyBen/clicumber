@@ -25,7 +25,7 @@ Then(/^the output should (not )?(?:contain|have|say) "([^"]*)"$/) do |negate, re
   end
 end
 
-Then(/^I should have a file "([^"]*)"$/) do |file|
+Then(/^the file "([^"]*)" should exist$/) do |file|
   expect(File.exist? file).to eq true
 end
 
