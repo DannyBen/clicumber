@@ -1,0 +1,31 @@
+name    "Clicumber Utilities"
+summary "Development utilities for clicumber"
+version "0.1.0"
+
+help   "Run tests"
+action :test do
+  exec "cucumber"
+end
+
+help   "Generate step definitions markdown document"
+action :stepdef do
+  regex = /^(Given|When|Then)\((\/.*\/)\) do.*$/
+  files = Dir['features/step_definitions/*.rb']
+  doc = []
+  doc << "# Cliumber Step Definitions\n"
+  files.each do |file|
+    doc << "## #{File.basename(file, '.rb')}\n"
+    File.readlines(file).each do |line|
+      if matches = regex.match(line)
+        clause = matches.captures[0]
+        definition = matches.captures[1] # .gsub /(".*?")/, '`__\1__`'
+        doc << "- __`#{clause}`__ `#{definition}`"
+      end
+    end
+  end
+  doc = doc.join "\n"
+  filename = 'doc/Step Definitions.md'
+  File.write filename, doc
+  say "Generated !txtpur!#{filename}"  
+end
+

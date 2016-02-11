@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
-gem "cucumber"
-gem 'rspec-expectations'
-gem 'byebug'
+group :test, :development do
+  gem "cucumber"
+  gem 'rspec-expectations'
+  gem 'byebug'
+  gem 'runfile'
+end
