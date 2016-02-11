@@ -18,6 +18,10 @@ Given(/^the file "([^"]*)" exists$/) do |file|
   File.write(file, 'stub') unless File.exist? file
 end
 
+Given(/^the (?:folder|dir|directory) "([^"]*)" exists$/) do |dir|
+  Dir.mkdir(dir) unless Dir.exist? dir
+end
+
 # When
 
 When(/^I run: (.+)$/) do |command|
@@ -43,6 +47,14 @@ Then(/^the file "([^"]*)" should (not )?exist$/) do |file, negate|
     expect(File.exist? file).to eq false
   else
     expect(File.exist? file).to eq true
+  end
+end
+
+Then(/^the (?:folder|dir|directory) "([^"]*)" should (not )?exist$/) do |dir, negate|
+  if negate
+    expect(Dir.exist? dir).to eq false
+  else
+    expect(Dir.exist? dir).to eq true
   end
 end
 

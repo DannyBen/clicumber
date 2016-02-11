@@ -27,3 +27,10 @@ Scenario: Command that deletes a file
     And the file "cl4p-tp.txt" exists
    When I run: rm "cl4p-tp.txt"
    Then the file "cl4p-tp.txt" should not exist
+
+Scenario: Command that creates a folder
+  Given the folder "sandbox/hyperion" exists
+    And I am in the "sandbox" folder
+   When I run: rmdir "hyperion"
+   Then the folder "hyperion" should not exist
+
