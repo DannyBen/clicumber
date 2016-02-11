@@ -7,12 +7,13 @@ Cucumber step definitions for testing command line applications.
 
 ## Usage
 
-TBC
+Grab a copy of the [step definitions file][2] and place it in your 
+`step_definitions` folder.
+
+To see the available steps, look at the [showcase feature file][3].
 
 
-## Dev Notes
-
-- [Cucumber Hooks][1]
 
 ---
-[1]: https://github.com/cucumber/cucumber/wiki/Hooks
+[2]: https://github.com/DannyBen/clicumber/blob/master/features/step_definitions/clicumber.rb
+[3]: https://github.com/DannyBen/clicumber/blob/master/features/showcase.feature

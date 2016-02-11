@@ -1,3 +1,12 @@
+# Hooks
+
+# Undo the "change dir" step if needed
+Before do
+  next unless $original_dir
+  Dir.chdir $original_dir
+  $original_dir = nil
+end
+
 # Given
 
 Given(/^I am in the "([^"]+)" (?:folder|dir|directory)$/) do |dir|
