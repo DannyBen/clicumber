@@ -1,3 +1,5 @@
+require 'fileutils'
+
 name    "Clicumber Utilities"
 summary "Development utilities for clicumber"
 version "0.1.0"
@@ -5,6 +7,24 @@ version "0.1.0"
 help   "Run tests"
 action :spec do
   exec "cucumber"
+end
+
+usage  "scaffold [--force]"
+help   "Generate a folder with a complete cucumber setup"
+option "-f --force", "Force generation even if folder exists"
+action :scaffold do |args|
+  target = 'scaffold'
+  if Dir.exist? target and !args['--force']
+    abort "Folder '#{target}' already exists, aborting to avoid data loss.\nUse --force to generate anyway." 
+  end
+  Dir.mkdir target unless Dir.exist? target
+  entries = %w[config features]
+  entries.each do |entry|
+    FileUtils.copy_entry entry, "#{target}/#{entry}"
+  end
+
+  gemfile_content = %Q[source "https://rubygems.org"\n\ngem "cucumber"\ngem 'rspec-expectations']
+  File.write "#{target}/Gemfile", gemfile_content
 end
 
 help   "Generate step definitions markdown document"

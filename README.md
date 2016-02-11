@@ -13,6 +13,10 @@ Grab a copy of the [step definitions file][2] and place it in your
 To see the available steps, look at the [showcase feature file][3] or at the
 [step definitions summary][1].
 
+If you do not have your cucumber environment set up already, you can also
+execute `run scaffold` in the repository's folder. It will generate a 
+`scaffold` folder for you with everything you need.
+
 
 
 ---
