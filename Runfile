@@ -12,9 +12,9 @@ action :stepdef do
   regex = /^(Given|When|Then)\((\/.*\/)\) do.*$/
   files = Dir['features/step_definitions/*.rb']
   doc = []
-  doc << "# Cliumber Step Definitions\n"
+  doc << "# Clicumber Step Definitions Summary\n"
   files.each do |file|
-    doc << "## #{File.basename(file, '.rb')}\n"
+    # doc << "## #{File.basename(file, '.rb')}\n"
     File.readlines(file).each do |line|
       if matches = regex.match(line)
         clause = matches.captures[0]

@@ -1,6 +1,4 @@
-# Cliumber Step Definitions
-
-## clicumber
+# Clicumber Step Definitions
 
 - __`Given`__ `/^I am in the "([^"]+)" (?:folder|dir|directory)$/`
 - __`Given`__ `/^the file "([^"]*)" exists$/`
