@@ -20,3 +20,10 @@ Scenario: Command that generates a file
    When I run: echo "Y U NO RUN?" > meme.txt
    Then the file "meme.txt" should exist
     And the file "meme.txt" should contain "Y U NO"
+    And the file "meme.txt" should not contain "my password"
+
+Scenario: Command that deletes a file
+  Given I am in the "sandbox" directory
+    And the file "cl4p-tp.txt" exists
+   When I run: rm "cl4p-tp.txt"
+   Then the file "cl4p-tp.txt" should not exist

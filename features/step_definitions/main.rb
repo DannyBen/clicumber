@@ -5,6 +5,10 @@ Given(/^I am in the "([^"]+)" (?:folder|dir|directory)$/) do |dir|
   Dir.chdir dir
 end
 
+Given(/^the file "([^"]*)" exists$/) do |file|
+  File.write(file, 'stub') unless File.exist? file
+end
+
 # When
 
 When(/^I run: (.+)$/) do |command|
@@ -25,10 +29,18 @@ Then(/^the output should (not )?(?:contain|have|say) "([^"]*)"$/) do |negate, re
   end
 end
 
-Then(/^the file "([^"]*)" should exist$/) do |file|
-  expect(File.exist? file).to eq true
+Then(/^the file "([^"]*)" should (not )?exist$/) do |file, negate|
+  if negate
+    expect(File.exist? file).to eq false
+  else
+    expect(File.exist? file).to eq true
+  end
 end
 
-Then(/^the file "([^"]*)" should contain "([^"]*)"$/) do |file, regex|
-  expect(File.read file).to match /#{regex}/im
+Then(/^the file "([^"]*)" should (not )?contain "([^"]*)"$/) do |file, negate, regex|
+  if negate
+    expect(File.read file).to_not match /#{regex}/im
+  else
+    expect(File.read file).to match /#{regex}/im
+  end
 end
