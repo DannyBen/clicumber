@@ -3,7 +3,7 @@ summary "Development utilities for clicumber"
 version "0.1.0"
 
 help   "Run tests"
-action :test do
+action :spec do
   exec "cucumber"
 end
 

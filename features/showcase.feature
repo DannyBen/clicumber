@@ -34,3 +34,17 @@ Scenario: Command that creates a folder
    When I run: rmdir "hyperion"
    Then the folder "hyperion" should not exist
 
+Scenario: Working with file fixtures
+  Given I am in the "sandbox" folder
+    And the file "whatever.txt" is like "fixtures/whatever.txt"
+   When I run: cat "whatever.txt"
+   Then the output should be like "fixtures/whatever.txt"
+    And the output should not be like "fixtures/not_this.txt"
+    And the output should say "Hello"
+
+Scenario: Create a fixture file on the fly
+  Given I am in the "sandbox" folder
+    And the file "whatever.txt" has the content "Hello World"
+   When I run: cat "whatever.txt"
+   Then the output should say "Hello World"
+

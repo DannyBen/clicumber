@@ -1,5 +1,1 @@
 .byebug_history
-*.sublime*
-
-/sandbox/*
-!/sandbox/.keep

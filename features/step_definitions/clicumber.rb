@@ -22,6 +22,14 @@ Given(/^the (?:folder|dir|directory) "([^"]*)" exists$/) do |dir|
   Dir.mkdir(dir) unless Dir.exist? dir
 end
 
+Given(/^the file "([^"]*)" has the content "([^"]*)"$/) do |file, content|
+  File.write(file, content)
+end
+
+Given(/^the file "([^"]*)" is like "([^"]*)"$/) do |target, source|
+  FileUtils.cp source, target
+end
+
 # When
 
 When(/^I run: (.+)$/) do |command|
@@ -63,5 +71,13 @@ Then(/^the file "([^"]*)" should (not )?contain "([^"]*)"$/) do |file, negate, r
     expect(File.read file).to_not match /#{regex}/im
   else
     expect(File.read file).to match /#{regex}/im
+  end
+end
+
+Then(/^the output should (not )?be like "([^"]*)"$/) do |negate, file|
+  if negate
+    expect(@stdout).to_not eq File.read(file)
+  else
+    expect(@stdout).to eq File.read(file)
   end
 end
