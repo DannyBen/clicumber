@@ -40,7 +40,6 @@ Scenario: Command that creates a folder
    When I run: mkdir "hyperion"
    Then the folder "hyperion" should exist
 
-@current
 Scenario: Checking for an empty directory
   Given the folder "sandbox/tmp" exists
     And I am in the "sandbox/tmp" folder
