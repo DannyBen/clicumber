@@ -4,9 +4,12 @@ name    "Clicumber Utilities"
 summary "Development utilities for clicumber"
 version "0.1.0"
 
-help   "Run tests"
-action :spec do
-  exec "cucumber"
+usage  "test [current]"
+help   "Run cucumber feature tests"
+action :test do |args|
+  cmd = "cucumber"
+  cmd = "#{cmd} --tags @current" if args['current']
+  exec cmd
 end
 
 usage  "scaffold [--force]"
@@ -23,7 +26,7 @@ action :scaffold do |args|
     FileUtils.copy_entry entry, "#{target}/#{entry}"
   end
 
-  gemfile_content = %Q[source "https://rubygems.org"\n\ngem "cucumber"\ngem 'rspec-expectations']
+  gemfile_content = %Q[source "https://rubygems.org"\n\ngem "cucumber"\ngem 'rspec-expectations\ngem 'byebug']
   File.write "#{target}/Gemfile", gemfile_content
 end
 

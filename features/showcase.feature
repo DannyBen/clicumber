@@ -28,11 +28,54 @@ Scenario: Command that deletes a file
    When I run: rm "cl4p-tp.txt"
    Then the file "cl4p-tp.txt" should not exist
 
-Scenario: Command that creates a folder
-  Given the folder "sandbox/hyperion" exists
-    And I am in the "sandbox" folder
+Scenario: Command that deletes a folder
+  Given I am in the "sandbox" folder
+    And the folder "hyperion" exists
    When I run: rmdir "hyperion"
    Then the folder "hyperion" should not exist
+
+Scenario: Command that creates a folder
+  Given I am in the "sandbox" folder
+    And the folder "hyperion" does not exist
+   When I run: mkdir "hyperion"
+   Then the folder "hyperion" should exist
+
+@current
+Scenario: Checking for an empty directory
+  Given the folder "sandbox/tmp" exists
+    And I am in the "sandbox/tmp" folder
+    And the folder is not empty
+   When I run: rm "file_zero"
+   Then the folder should be empty
+
+Scenario: Checking for file presence
+  Given I am in the "sandbox" folder
+    And the file "passwords.txt" does not exist
+   When I run: cat passwords.txt
+   Then the error output should match "No such file or directory"
+    And the exit code should not be "0"
+
+Scenario: Checking for file content
+  Given I am in the "sandbox" folder
+    And the file "passwords.txt" contains "bank: 1234hackme"
+   When I run: cat passwords.txt
+   Then the output should be "bank: 1234hackme"
+    And the exit code should not be "11"
+
+Scenario: Checking for file content with a regex
+  Given I am in the "sandbox" folder
+    And the file "passwords.txt" contains "bank: 1234hackme"
+   When I run: echo "\nfacebook: 123password" >> passwords.txt
+   Then the file "passwords.txt" should match "\d+hackme"
+    And the file "passwords.txt" should match "\d+password"
+    And the file "passwords.txt" should not match "easypassword"
+
+Scenario: Checking for exact file content
+  Given I am in the "sandbox" folder
+   When I run: echo "they will come" > "if you build it.txt"
+   Then the file "if you build it.txt" should be "they will come"
+    And the file "if you build it.txt" should not be "they will go"
+    And the status code should be "0"
 
 Scenario: Working with file fixtures
   Given I am in the "sandbox" folder
@@ -48,3 +91,16 @@ Scenario: Create a fixture file on the fly
    When I run: cat "whatever.txt"
    Then the output should say "Hello World"
 
+Scenario: Fixturing an empty directory
+  Given I am in the "sandbox" folder
+    And the folder is empty
+   When I run: touch "some_file"
+   Then the folder should not be empty
+
+Scenario: Fixturing a non empty directory
+  Given I am in the "sandbox" folder
+    And the folder is not empty
+   When I run: ls | wc -l
+   Then the output should match "\d+"
+    And the output should not be "0"
+    And the output should not match "permission denied"

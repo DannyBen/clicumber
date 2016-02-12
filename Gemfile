@@ -5,4 +5,5 @@ group :test, :development do
   gem 'rspec-expectations'
   gem 'byebug'
   gem 'runfile'
+  gem 'simplecov'
 end
