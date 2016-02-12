@@ -39,7 +39,7 @@ curl -o 'features/step_definitions/clicumber.rb' https://raw.githubusercontent.c
 
 If you are using [Runfile][4], you can use this task:
 
-```
+```ruby
 help   "Download a fresh copy of clicumber stepdefs"
 action :clicumber do
   file = "features/step_definitions/clicumber.rb"
