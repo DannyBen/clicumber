@@ -1,14 +1,21 @@
 # Clicumber Step Definitions Summary
 
 - __`Given`__ `/^I am in the "([^"]+)" (?:folder|dir|directory)$/`
-- __`Given`__ `/^the file "([^"]*)" exists$/`
-- __`Given`__ `/^the (?:folder|dir|directory) "([^"]*)" exists$/`
-- __`Given`__ `/^the file "([^"]*)" has the content "([^"]*)"$/`
+- __`Given`__ `/^the (?:folder|dir|directory) "([^"]*)" (does not )?exists?$/`
+- __`Given`__ `/^the (?:folder|dir|directory) is (not )?empty$/`
+- __`Given`__ `/^the file "([^"]*)" (does not )?exists?$/`
+- __`Given`__ `/^the file "([^"]*)" (?:contains|has the content) "([^"]*)"$/`
 - __`Given`__ `/^the file "([^"]*)" is like "([^"]*)"$/`
 - __`When`__ `/^I run: (.+)$/`
 - __`When`__ `/^I run "([^"]+)"$/`
-- __`Then`__ `/^the output should (not )?(?:contain|have|say) "([^"]*)"$/`
+- __`Then`__ `/^the (error )?output should (not )?be like "([^"]*)"$/`
+- __`Then`__ `/^the (error )?output should (not )?match "([^"]*)"$/`
+- __`Then`__ `/^the (error )?output should (not )?(?:contain|include|have|say|read) "([^"]*)"$/`
+- __`Then`__ `/^the (error )?output should (not )?(?:be|equal) "([^"]*)"$/`
 - __`Then`__ `/^the file "([^"]*)" should (not )?exist$/`
+- __`Then`__ `/^the file "([^"]*)" should (not )?match "([^"]*)"$/`
+- __`Then`__ `/^the file "([^"]*)" should (not )?(?:contain|include|have|say|read) "([^"]*)"$/`
+- __`Then`__ `/^the file "([^"]*)" should (not )?(?:be|equal) "([^"]*)"$/`
 - __`Then`__ `/^the (?:folder|dir|directory) "([^"]*)" should (not )?exist$/`
-- __`Then`__ `/^the file "([^"]*)" should (not )?contain "([^"]*)"$/`
-- __`Then`__ `/^the output should (not )?be like "([^"]*)"$/`
+- __`Then`__ `/^the (?:folder|dir|directory) should (not )?be empty$/`
+- __`Then`__ `/^the (?:status|exit) code should (not )?be "([^"]*)"$/`
