@@ -5,6 +5,14 @@
 Cucumber step definitions for testing command line applications.
 
 
+## If you...
+
+- Love testing with Cucumber
+- Love making command line apps
+
+Then read on. Otherwise, here is a [random cat][5].
+
+
 ## Usage
 
 Grab a copy of the [step definitions file][2] and place it in your 
@@ -54,3 +62,4 @@ end
 [2]: https://github.com/DannyBen/clicumber/blob/master/features/step_definitions/clicumber.rb
 [3]: https://github.com/DannyBen/clicumber/blob/master/features/showcase.feature
 [4]: https://github.com/DannyBen/runfile
+[5]: http://thecatapi.com/api/images/get
