@@ -3,4 +3,4 @@ some_file
 hyperion
 tmp
 !fixtures/*
-
+!fixtures/maliwan/*.txt
