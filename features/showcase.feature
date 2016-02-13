@@ -103,3 +103,12 @@ Scenario: Fixturing a non empty directory
    Then the output should match "\d+"
     And the output should not be "0"
     And the output should not match "permission denied"
+
+Scenario: Fixturing a directory with contents
+  Given I am in the "sandbox" folder
+    And the folder "maliwan" is like "fixtures/maliwan"
+   When I go into the "maliwan" folder
+    And I run: ls
+   Then the output should have "corrosive"
+    And the output should have "fire"
+    And the output should have "shock"
