@@ -3,11 +3,13 @@
 - __`Given`__ `/^I am in the "([^"]+)" (?:folder|dir|directory)$/`
 - __`Given`__ `/^the (?:folder|dir|directory) "([^"]*)" (does not )?exists?$/`
 - __`Given`__ `/^the (?:folder|dir|directory) is (not )?empty$/`
+- __`Given`__ `/^the (?:folder|dir|directory) "([^"]*)" is like "([^"]*)"$/`
 - __`Given`__ `/^the file "([^"]*)" (does not )?exists?$/`
 - __`Given`__ `/^the file "([^"]*)" (?:contains|has the content) "([^"]*)"$/`
 - __`Given`__ `/^the file "([^"]*)" is like "([^"]*)"$/`
 - __`When`__ `/^I run: (.+)$/`
 - __`When`__ `/^I run "([^"]+)"$/`
+- __`When`__ `/^I go into the "([^"]*)" (?:folder|dir|directory)$/`
 - __`Then`__ `/^the (error )?output should (not )?be like "([^"]*)"$/`
 - __`Then`__ `/^the (error )?output should (not )?match "([^"]*)"$/`
 - __`Then`__ `/^the (error )?output should (not )?(?:contain|include|have|say|read) "([^"]*)"$/`
