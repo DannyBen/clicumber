@@ -13,7 +13,7 @@ end
 # Given...dir
 
 Given(/^I am in the "([^"]+)" (?:folder|dir|directory)$/) do |dir|
-  $original_dir = Dir.pwd
+  $original_dir = Dir.pwd unless $original_dir
   Dir.chdir dir
 end
 
@@ -32,6 +32,11 @@ Given(/^the (?:folder|dir|directory) is (not )?empty$/) do |negate|
     FileUtils.rm_f Dir["*"] unless Dir["*"].empty?
   end
 end
+
+Given(/^the (?:folder|dir|directory) "([^"]*)" is like "([^"]*)"$/) do |target, source|
+  FileUtils.cp_r source, target
+end
+
 
 # Given...file
 
@@ -59,6 +64,13 @@ end
 
 When(/^I run "([^"]+)"$/) do |command|
   @stdout, @stderr, @status = Open3.capture3 command
+end
+
+# When...dir
+
+When(/^I go into the "([^"]*)" (?:folder|dir|directory)$/) do |dir|
+  $original_dir = Dir.pwd unless $original_dir
+  Dir.chdir dir
 end
 
 # Then...output
