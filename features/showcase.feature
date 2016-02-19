@@ -76,13 +76,22 @@ Scenario: Checking for exact file content
     And the file "if you build it.txt" should not be "they will go"
     And the status code should be "0"
 
-Scenario: Working with file fixtures
+Scenario: Checking file content against a fixture
   Given I am in the "sandbox" folder
     And the file "whatever.txt" is like "fixtures/whatever.txt"
    When I run: cat "whatever.txt"
    Then the output should be like "fixtures/whatever.txt"
     And the output should not be like "fixtures/not_this.txt"
     And the output should say "Hello"
+
+Scenario: Checking file content against a fixture with similarity
+  Given I am in the "sandbox" folder
+    And the file "yahoo.txt" is like "fixtures/yahoo.txt"
+   When I run: cat "yahoo.txt"
+   Then the output should resemble "fixtures/yahoo-short.txt"
+    And the output should resemble "fixtures/yahoo-short.txt" by "90%"
+    And the output should not resemble "fixtures/yahoo-short.txt" by "95%"
+    And the output should not resemble "fixtures/microsoft.txt"
 
 Scenario: Create a fixture file on the fly
   Given I am in the "sandbox" folder

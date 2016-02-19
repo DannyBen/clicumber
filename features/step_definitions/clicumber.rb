@@ -84,6 +84,17 @@ Then(/^the (error )?output should (not )?be like "([^"]*)"$/) do |stderr, negate
   end
 end
 
+Then(/^the (error )?output should (not )?resemble "([^"]*)"(?: by "(\d{1,2})%?")?$/) do |stderr, negate, file, percentage|
+  stream = stderr ? @stderr : @stdout
+  similarity = stream.similar File.read(file)
+  percentage ||= 90
+  if negate
+    expect(similarity).to_not be >= percentage.to_f
+  else
+    expect(similarity).to be >= percentage.to_f
+  end
+end
+
 Then(/^the (error )?output should (not )?match "([^"]*)"$/) do |stderr, negate, content|
   stream = stderr ? @stderr : @stdout
   if negate

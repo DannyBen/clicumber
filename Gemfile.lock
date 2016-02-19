@@ -29,6 +29,7 @@ GEM
     runfile (0.5.4)
       colsole (~> 0.2)
       docopt (~> 0.5)
+    similar_text (0.0.4)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -43,6 +44,7 @@ DEPENDENCIES
   cucumber
   rspec-expectations
   runfile
+  similar_text
   simplecov
 
 BUNDLED WITH

@@ -11,6 +11,7 @@
 - __`When`__ `/^I run "([^"]+)"$/`
 - __`When`__ `/^I go into the "([^"]*)" (?:folder|dir|directory)$/`
 - __`Then`__ `/^the (error )?output should (not )?be like "([^"]*)"$/`
+- __`Then`__ `/^the (error )?output should (not )?resemble "([^"]*)"(?: by "(\d{1,2})%?")?$/`
 - __`Then`__ `/^the (error )?output should (not )?match "([^"]*)"$/`
 - __`Then`__ `/^the (error )?output should (not )?(?:contain|include|have|say|read) "([^"]*)"$/`
 - __`Then`__ `/^the (error )?output should (not )?(?:be|equal) "([^"]*)"$/`
