@@ -26,7 +26,7 @@ action :scaffold do |args|
     FileUtils.copy_entry entry, "#{target}/#{entry}"
   end
 
-  gemfile_content = %Q[source "https://rubygems.org"\n\ngem "cucumber"\ngem 'rspec-expectations'\ngem 'byebug'\ngem 'simplecov']
+  gemfile_content = %Q[source "https://rubygems.org"\n\ngem "cucumber"\ngem 'rspec-expectations'\ngem 'byebug'\ngem 'simplecov'\ngem 'similar_text']
   File.write "#{target}/Gemfile", gemfile_content
 end
 
