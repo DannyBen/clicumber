@@ -32,17 +32,22 @@ end
 
 help   "Generate step definitions markdown document"
 action :stepdef do
-  regex = /^(Given|When|Then)\((\/.*\/)\) do.*$/
+  step = /^(Given|When|Then)\((\/.*\/)\) do.*$/
+  caption = /^## ?(.*)$/
   files = Dir['features/step_definitions/*.rb']
   doc = []
   doc << "# Clicumber Step Definitions Summary\n"
   files.each do |file|
     # doc << "## #{File.basename(file, '.rb')}\n"
     File.readlines(file).each do |line|
-      if matches = regex.match(line)
+      if matches = step.match(line)
         clause = matches.captures[0]
         definition = matches.captures[1] # .gsub /(".*?")/, '`__\1__`'
         doc << "- __`#{clause}`__ `#{definition}`"
+      end
+      if matches = caption.match(line)
+        title = matches.captures[0]
+        doc << "\n## #{title}\n"
       end
     end
   end
