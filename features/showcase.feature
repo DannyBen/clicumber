@@ -99,6 +99,13 @@ Scenario: Create a fixture file on the fly
    When I run: cat "whatever.txt"
    Then the output should say "Hello World"
 
+Scenario: Wait for a few seconds
+  Given I am in the "sandbox" folder
+   When I run: date +"%S" > time.txt
+    And I wait for "2" seconds
+    And I run: date +"%S"
+   Then the output should not be like "time.txt"
+
 Scenario: Fixturing an empty directory
   Given I am in the "sandbox" folder
     And the folder is empty

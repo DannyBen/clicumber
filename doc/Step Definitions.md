@@ -23,6 +23,10 @@
 
 - __`When`__ `/^I go into the "([^"]*)" (?:folder|dir|directory)$/`
 
+## When...wait
+
+- __`When`__ `/^I wait (?:for )?"([^"]*)" seconds?$/`
+
 ## Then...output
 
 - __`Then`__ `/^the (error )?output should (not )?be like "([^"]*)"$/`
