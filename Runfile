@@ -1,8 +1,7 @@
 require 'fileutils'
 
-name    "Clicumber Utilities"
+title   "Clicumber Utilities"
 summary "Development utilities for clicumber"
-version "0.1.0"
 
 usage  "test [current]"
 help   "Run cucumber feature tests"
