@@ -18,6 +18,10 @@
 
 - __`Given`__ `/^the variable "([^"]*)" is (not )?"([^"]*)"$/`
 
+## Given...ran
+
+- __`Given`__ `/^I have already ran "([^"]*)"$/`
+
 ## When...run
 
 - __`When`__ `/^I run: (.+)$/`
