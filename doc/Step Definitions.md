@@ -55,7 +55,6 @@
 ## Then...debug
 
 - __`Then`__ `/^stop for debug$/`
-- __`Then`__ `/^the (?:status|exit) code should be (success|failure)$/`
 
 ## Then...exit code
 
