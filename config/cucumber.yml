@@ -4,7 +4,7 @@
   std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --tags ~@wip"
 %>
 
-default: --no-source <%= std_opts %> features
+default: -q <%= std_opts %> features
 wip:     --tags @wip:3 --wip features
 current: -s <%= std_opts %> --tags @current features
 rerun:   <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip

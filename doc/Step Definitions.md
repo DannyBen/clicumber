@@ -14,6 +14,10 @@
 - __`Given`__ `/^the file "([^"]*)" (?:contains|has the content) "([^"]*)"$/`
 - __`Given`__ `/^the file "([^"]*)" is like "([^"]*)"$/`
 
+## Given...environment
+
+- __`Given`__ `/^the variable "([^"]*)" is (not )?"([^"]*)"$/`
+
 ## When...run
 
 - __`When`__ `/^I run: (.+)$/`
@@ -41,12 +45,19 @@
 - __`Then`__ `/^the file "([^"]*)" should (not )?match "([^"]*)"$/`
 - __`Then`__ `/^the file "([^"]*)" should (not )?(?:contain|include|have|say|read) "([^"]*)"$/`
 - __`Then`__ `/^the file "([^"]*)" should (not )?(?:be|equal) "([^"]*)"$/`
+- __`Then`__ `/^the file "([^"]*)" should (not )?be like "([^"]*)"$/`
 
 ## Then...dir
 
 - __`Then`__ `/^the (?:folder|dir|directory) "([^"]*)" should (not )?exist$/`
 - __`Then`__ `/^the (?:folder|dir|directory) should (not )?be empty$/`
 
+## Then...debug
+
+- __`Then`__ `/^stop for debug$/`
+- __`Then`__ `/^the (?:status|exit) code should be (success|failure)$/`
+
 ## Then...exit code
 
-- __`Then`__ `/^the (?:status|exit) code should (not )?be "([^"]*)"$/`
+- __`Then`__ `/^the (?:status|exit) code should (not )?be "([^"]+)"$/`
+- __`Then`__ `/^the (?:status|exit) code should mean (success|failure)$/`

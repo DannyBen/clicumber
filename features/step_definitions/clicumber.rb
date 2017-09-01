@@ -37,7 +37,6 @@ Given(/^the (?:folder|dir|directory) "([^"]*)" is like "([^"]*)"$/) do |target, 
   FileUtils.cp_r source, target
 end
 
-
 ## Given...file
 
 Given(/^the file "([^"]*)" (does not )?exists?$/) do |file, negate|
@@ -54,6 +53,16 @@ end
 
 Given(/^the file "([^"]*)" is like "([^"]*)"$/) do |target, source|
   FileUtils.cp source, target
+end
+
+## Given...environment
+
+Given(/^the variable "([^"]*)" is (not )?"([^"]*)"$/) do |name, negate, value|
+  if negate
+    ENV[name] = "not_#{value}"
+  else
+    ENV[name] = value
+  end
 end
 
 ## When...run
@@ -161,6 +170,14 @@ Then(/^the file "([^"]*)" should (not )?(?:be|equal) "([^"]*)"$/) do |file, nega
   end
 end
 
+Then(/^the file "([^"]*)" should (not )?be like "([^"]*)"$/) do |file1, negate, file2|
+  if negate
+    expect(File.read(file1).strip).to_not eq File.read(file2).strip
+  else
+    expect(File.read(file1).strip).to eq File.read(file2).strip
+  end
+end
+
 ## Then...dir
 
 Then(/^the (?:folder|dir|directory) "([^"]*)" should (not )?exist$/) do |dir, negate|
@@ -179,12 +196,34 @@ Then(/^the (?:folder|dir|directory) should (not )?be empty$/) do |negate|
   end
 end
 
+## Then...debug
+
+Then(/^stop for debug$/) do
+  byebug
+end
+
+Then(/^the (?:status|exit) code should be (success|failure)$/) do |type|
+  if type == "failure"
+    expect(@status.success?).to_not be true
+  else
+    expect(@status.success?).to be true
+  end
+end
+
 ## Then...exit code
 
-Then(/^the (?:status|exit) code should (not )?be "([^"]*)"$/) do |negate, code|
+Then(/^the (?:status|exit) code should (not )?be "([^"]+)"$/) do |negate, code|
   if negate
-    expect(@status.to_i).to_not eq code.to_i
+    expect(@status.exitstatus).to_not eq code.to_i
   else
-    expect(@status.to_i).to eq code.to_i
+    expect(@status.exitstatus).to eq code.to_i
+  end
+end
+
+Then(/^the (?:status|exit) code should mean (success|failure)$/) do |type|
+  if type == "failure"
+    expect(@status.success?).to_not be true
+  else
+    expect(@status.success?).to be true
   end
 end
