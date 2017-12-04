@@ -118,9 +118,9 @@ end
 Then(/^the (error )?output should (not )?match "([^"]*)"$/) do |stderr, negate, content|
   stream = stderr ? @stderr : @stdout
   if negate
-    expect(stream).to_not match /#{content}/im
+    expect(stream).to_not match(/#{content}/im)
   else
-    expect(stream).to match /#{content}/im 
+    expect(stream).to match(/#{content}/im)
   end
 end
 
@@ -154,9 +154,9 @@ end
 
 Then(/^the file "([^"]*)" should (not )?match "([^"]*)"$/) do |file, negate, content|
   if negate
-    expect(File.read file).to_not match /#{content}/im
+    expect(File.read file).to_not match(/#{content}/im)
   else
-    expect(File.read file).to match /#{content}/im
+    expect(File.read file).to match(/#{content}/im)
   end
 end
 
