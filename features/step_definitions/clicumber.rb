@@ -1,4 +1,4 @@
-# Stepdefs courtesy of Clicumber
+# Stepdefs courtesy of Clicumber 180821
 # https://github.com/DannyBen/clicumber
 
 # Hooks
@@ -65,6 +65,14 @@ Given(/^the variable "([^"]*)" is (not )?"([^"]*)"$/) do |name, negate, value|
   end
 end
 
+Given(/^the variable "([^"]*)" is empty$/) do |name, negate|
+  if negate
+    ENV[name] = "not_empty"
+  else
+    ENV[name] = nil
+  end
+end
+
 ## Given...ran
 
 Given(/^I have already ran "([^"]*)"$/) do |command|
@@ -91,6 +99,13 @@ end
 ## When...wait
 When(/^I wait (?:for )?"([^"]*)" seconds?$/) do |seconds|
   sleep seconds.to_f
+end
+
+## When...save
+
+When(/^I save the (error )?output to "([^"]*)"$/) do |stderr, file|
+  stream = stderr ? @stderr : @stdout
+  File.write file, stream
 end
 
 ## Then...output
