@@ -65,7 +65,7 @@ Given(/^the variable "([^"]*)" is (not )?"([^"]*)"$/) do |name, negate, value|
   end
 end
 
-Given(/^the variable "([^"]*)" is empty$/) do |name, negate|
+Given(/^the variable "([^"]*)" is (not )?empty$/) do |name, negate|
   if negate
     ENV[name] = "not_empty"
   else
